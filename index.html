@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travaux · Frontend Web Development</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- ===== Course menu (scraped) ===== -->
+    <aside class="sidebar widget light">
+      <a class="course-name" id="course-home" href="#">Travaux</a>
+      <p class="term" id="term"></p>
+      <nav aria-label="Menu du cours"><ul class="course-nav" id="course-nav"></ul></nav>
+    </aside>
+
+    <main class="main">
+      <!-- ===== Breadcrumbs (scraped) ===== -->
+      <nav class="crumbs" aria-label="Fil d’Ariane"><ol id="crumbs"></ol></nav>
+
+      <div id="message" class="message" role="alert" hidden></div>
+
+      <!-- ===== Widgets ===== -->
+      <section class="bento">
+
+        <!-- 1. Hero: title + filters + stacked cards -->
+        <article class="widget dark hero">
+          <h1 class="hero-title" id="hero-title">Reading your Canvas page…</h1>
+
+          <div class="tabs" role="tablist" aria-label="Filtres">
+            <button class="tab" data-filter="all" aria-pressed="true">All <span id="count-all">0</span></button>
+            <button class="tab" data-filter="Active" aria-pressed="false">Active <span id="count-active">0</span></button>
+            <button class="tab" data-filter="Past" aria-pressed="false">Past <span id="count-past">0</span></button>
+            <button class="tab" data-filter="Graded" aria-pressed="false">Graded <span id="count-graded">0</span></button>
+          </div>
+
+          <div class="stack" id="stack" aria-hidden="true"></div>
+          <button class="round-btn stack-btn" id="go-tasks" aria-label="Voir les travaux">›</button>
+        </article>
+
+        <!-- 2. Big number -->
+        <article class="widget dark glow-gold score">
+          <p class="big-number" id="big-number">0%</p>
+          <p class="sentence" id="score-sentence"></p>
+          <p class="updated" id="updated"></p>
+        </article>
+
+        <!-- 3. To-do status -->
+        <article class="widget light todo">
+          <div class="todo-bar"><span id="todo-fill"></span></div>
+          <div class="todo-head">
+            <span class="round-icon" id="todo-icon"></span>
+            <h2 id="todo-title">0 to do</h2>
+          </div>
+          <p class="todo-text" id="todo-text"></p>
+        </article>
+
+        <!-- 4. Course progress (points) -->
+        <article class="widget dark glow-orange course">
+          <div class="course-top">
+            <div>
+              <span class="round-icon dark-icon" id="course-icon"></span>
+              <h2 class="course-title" id="course-title"></h2>
+              <p class="meta" id="course-meta"></p>
+            </div>
+            <div class="poster" id="poster"></div>
+          </div>
+          <div class="seg-bar">
+            <div class="seg-track"><span class="seg-fill" id="points-fill"></span></div>
+            <span class="seg-label" id="points-left"></span>
+          </div>
+        </article>
+      </section>
+
+      <!-- ===== Tasks ===== -->
+      <section class="tasks-section" id="tasks-section">
+        <div class="toolbar">
+          <label class="search">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input type="search" id="search" placeholder="Rechercher un travail" aria-label="Rechercher un travail" />
+          </label>
+          <div class="view-toggle" role="radiogroup" aria-label="Affichage">
+            <button class="selected" data-view="date">Par date</button>
+            <button data-view="type">Par type</button>
+          </div>
+          <button class="btn-export" id="export">Export CSV</button>
+        </div>
+
+        <p class="showing" id="showing"></p>
+        <details id="warnings" class="warnings" hidden></details>
+
+        <div id="groups"></div>
+        <p id="empty" class="empty" hidden>No task matches. Try another word or filter.</p>
+      </section>
+
+      <footer class="footer">Scraped from Canvas with jQuery · <b>Fiinsi Kabore</b></footer>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
